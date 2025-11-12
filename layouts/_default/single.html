@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --text: #e6edf3;
+      --accent: #58a6ff;
+      --card: #161b22;
+    }
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background: var(--bg);
+      color: var(--text);
+      margin: 2rem auto;
+      max-width: 800px;
+      line-height: 1.7;
+    }
+    header {
+      border-bottom: 1px solid var(--accent);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+    }
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    pre {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: 'JetBrains Mono', monospace;
+      color: #a6e22e;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <p><a href="/">← 返回首页</a></p>
+    <h1>{{ .Title }}</h1>
+  </header>
+  <main>
+    {{ .Content }}
+  </main>
+</body>
+</html>

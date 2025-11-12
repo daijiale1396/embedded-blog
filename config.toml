@@ -1,0 +1,10 @@
+baseURL = "http://localhost:1313/"
+languageCode = "zh-cn"
+title = "Daijiale 的嵌入式笔记"
+theme = ""
+paginate = 10
+
+[markup]
+  [markup.highlight]
+    noClasses = false
+    style = "dracula"

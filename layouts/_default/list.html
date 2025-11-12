@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <style>
+    body {
+      background: #0d1117;
+      color: #e6edf3;
+      font-family: 'JetBrains Mono', monospace;
+      max-width: 800px;
+      margin: 2rem auto;
+      line-height: 1.6;
+    }
+    a { color: #58a6ff; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1 { color: #58a6ff; }
+    li {
+      margin: 0.5rem 0;
+      background: #161b22;
+      border-radius: 8px;
+      padding: 0.75rem 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>{{ .Title }}</h1>
+  <ul>
+    {{ range .Pages }}
+      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
+    {{ else }}
+      <li>暂无内容</li>
+    {{ end }}
+  </ul>
+</body>
+</html>
