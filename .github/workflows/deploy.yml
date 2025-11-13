@@ -2,8 +2,8 @@ name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
-    branches: ["main"]  # 每次推送 main 分支时自动触发
-  workflow_dispatch:     # 手动触发也可以
+    branches: ["main"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -45,4 +45,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
