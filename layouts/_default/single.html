@@ -2,54 +2,72 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0d1117;
-      --text: #e6edf3;
-      --accent: #58a6ff;
-      --card: #161b22;
+      color-scheme: light;
+      --bg: #f9fafb;
+      --text: #111827;
+      --accent: #007aff;
+      --code-bg: #f3f4f6;
+      --border: #e5e7eb;
     }
     body {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
       margin: 2rem auto;
-      max-width: 800px;
-      line-height: 1.7;
+      max-width: 720px;
+      padding: 0 1rem;
+      line-height: 1.75;
     }
-    header {
-      border-bottom: 1px solid var(--accent);
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.5rem;
-    }
-    a {
+    h1 {
       color: var(--accent);
-      text-decoration: none;
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
     }
-    a:hover {
-      text-decoration: underline;
+    .meta {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+    .content h2, .content h3 {
+      color: var(--accent);
+      margin-top: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .content p {
+      margin-bottom: 1rem;
     }
     pre {
-      background: var(--card);
+      background: var(--code-bg);
       padding: 1rem;
-      border-radius: 8px;
+      border-radius: 10px;
       overflow-x: auto;
     }
     code {
       font-family: 'JetBrains Mono', monospace;
-      color: #a6e22e;
+      color: #d6336c;
+      font-size: 0.9rem;
+    }
+    footer {
+      margin-top: 3rem;
+      text-align: center;
+      color: #9ca3af;
+      font-size: 0.85rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
     }
   </style>
 </head>
 <body>
-  <header>
-    <p><a href="/">← 返回首页</a></p>
-    <h1>{{ .Title }}</h1>
-  </header>
-  <main>
+  <h1>{{ .Title }}</h1>
+  <div class="meta">发布于 {{ .Date.Format "2006年01月02日" }}</div>
+  <main class="content">
     {{ .Content }}
   </main>
+  <footer>© {{ now.Format "2006" }} 笔记</footer>
 </body>
 </html>

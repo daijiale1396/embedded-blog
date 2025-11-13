@@ -2,54 +2,83 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Site.Title }}</title>
   <style>
     :root {
-      color-scheme: dark;
-      --bg: #0d1117;
-      --text: #e6edf3;
-      --accent: #58a6ff;
-      --card: #161b22;
+      color-scheme: light;
+      --bg: #f9fafb;
+      --text: #111827;
+      --subtext: #6b7280;
+      --accent: #007aff;
+      --card: #ffffff;
+      --border: #e5e7eb;
     }
     body {
-      font-family: 'JetBrains Mono', monospace;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text);
-      margin: 2rem auto;
-      max-width: 800px;
-      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 720px;
+      padding: 2rem 1rem;
+      line-height: 1.7;
     }
-    h1 {
-      color: var(--accent);
-      border-bottom: 2px solid var(--accent);
-      padding-bottom: 0.5rem;
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
     }
-    a {
+    header h1 {
+      font-weight: 600;
       color: var(--accent);
+      font-size: 1.6rem;
+      margin-bottom: 0.3rem;
+    }
+    header p {
+      color: var(--subtext);
+      font-size: 0.95rem;
+    }
+    .post-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .post-item {
+      background: var(--card);
+      margin: 0.8rem 0;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .post-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .post-title {
+      font-size: 1.1rem;
+      color: var(--text);
+      font-weight: 500;
       text-decoration: none;
     }
-    a:hover {
-      text-decoration: underline;
-    }
-    li {
-      background: var(--card);
-      margin: 0.5rem 0;
-      padding: 0.75rem 1rem;
-      border-radius: 8px;
-      transition: background 0.2s;
-    }
-    li:hover {
-      background: #1c2128;
+    .post-meta {
+      font-size: 0.85rem;
+      color: var(--subtext);
+      margin-top: 0.3rem;
     }
   </style>
 </head>
 <body>
-  <h1>{{ .Site.Title }}</h1>
-  <ul>
+  <header>
+    <h1>{{ .Site.Title }}</h1>
+    <p>{{ .Site.Params.description }}</p>
+  </header>
+
+  <ul class="post-list">
     {{ range .Site.RegularPages }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ else }}
-      <li>暂无文章</li>
+      <li class="post-item">
+        <a href="{{ .RelPermalink }}" class="post-title">{{ .Title }}</a>
+        <div class="post-meta">{{ .Date.Format "2006年01月02日" }}</div>
+      </li>
     {{ end }}
   </ul>
 </body>

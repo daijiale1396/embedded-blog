@@ -2,35 +2,57 @@
 <html lang="zh-cn">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ .Title }} | {{ .Site.Title }}</title>
   <style>
     body {
-      background: #0d1117;
-      color: #e6edf3;
-      font-family: 'JetBrains Mono', monospace;
-      max-width: 800px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      max-width: 720px;
       margin: 2rem auto;
-      line-height: 1.6;
+      padding: 0 1rem;
+      line-height: 1.7;
     }
-    a { color: #58a6ff; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    h1 { color: #58a6ff; }
-    li {
-      margin: 0.5rem 0;
-      background: #161b22;
-      border-radius: 8px;
-      padding: 0.75rem 1rem;
+    h1 {
+      font-size: 1.4rem;
+      color: #007aff;
+      font-weight: 600;
+      border-bottom: 1px solid #e5e7eb;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .post-item {
+      background: #fff;
+      padding: 1rem 1.2rem;
+      border-radius: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      margin: 0.8rem 0;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .post-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    a {
+      text-decoration: none;
+      color: #111827;
+      font-weight: 500;
+    }
+    .meta {
+      font-size: 0.85rem;
+      color: #6b7280;
+      margin-top: 0.3rem;
     }
   </style>
 </head>
 <body>
   <h1>{{ .Title }}</h1>
-  <ul>
-    {{ range .Pages }}
-      <li><a href="{{ .RelPermalink }}">{{ .Title }}</a></li>
-    {{ else }}
-      <li>暂无内容</li>
-    {{ end }}
-  </ul>
+  {{ range .Pages }}
+    <div class="post-item">
+      <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+      <div class="meta">{{ .Date.Format "2006年01月02日" }}</div>
+    </div>
+  {{ end }}
 </body>
 </html>
